@@ -5,9 +5,7 @@ import com.vimaan.model.User;
 import com.vimaan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,25 +18,47 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("login", new Login());
-        return mav;
-    }
-
-
-    @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-    public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-                                     @ModelAttribute("login") Login login) {
+        User user = (User) request.getSession().getAttribute("user");
         ModelAndView mav = null;
-        User user = userService.validateUser(login);
+
         if (null != user) {
             mav = new ModelAndView("welcome");
             mav.addObject("firstname", user.getFirstname());
         } else {
-            mav = new ModelAndView("login");
-            mav.addObject("message", "Username or Password is wrong!!");
+            mav = new ModelAndView("/");
         }
         return mav;
     }
 
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logOut(HttpServletRequest request, HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+
+        if (user != null) {
+            request.getSession().removeAttribute("user");
+        }
+        return new ModelAndView("redirect:/");
+    }
+
+    @RequestMapping(value = "/ajaxLoginProcess", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    String loginCheck(HttpServletRequest request, HttpServletResponse response) {
+        Login login = new Login();
+
+        login.setUsername(request.getParameter("username"));
+        login.setPassword(request.getParameter("password"));
+
+        User user = userService.validateUser(login);
+
+        String status = " ";
+        if(user != null) {
+            status = "success";
+            request.getSession().setAttribute("user", user);
+        } else {
+            status = "failure";
+        }
+        return status;
+    }
 }

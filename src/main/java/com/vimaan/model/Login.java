@@ -1,9 +1,7 @@
 package com.vimaan.model;
 
-/**
- * Created by pc on 9/25/2017.
- */
 public class Login {
+
     private String username;
     private String password;
 

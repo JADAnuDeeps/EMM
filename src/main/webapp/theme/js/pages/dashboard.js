@@ -48,7 +48,7 @@ $(function () {
   /* jQueryKnob */
   $('.knob').knob();
 
-  // jvectormap data
+  /*// jvectormap data
   var visitorsData = {
     US: 398, // USA
     SA: 400, // Saudi Arabia
@@ -88,7 +88,7 @@ $(function () {
       if (typeof visitorsData[code] != 'undefined')
         el.html(el.html() + ': ' + visitorsData[code] + ' new visitors');
     }
-  });
+  });*/
 
   // Sparkline charts
   var myvalues = [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021];
@@ -126,7 +126,7 @@ $(function () {
 
   /* Morris.js Charts */
   // Sales chart
-  var area = new Morris.Area({
+ /* var area = new Morris.Area({
     element   : 'revenue-chart',
     resize    : true,
     data      : [
@@ -189,7 +189,7 @@ $(function () {
     ],
     hideHover: 'auto'
   });
-
+*/
   // Fix for charts under tabs
   $('.box ul.nav a').on('shown.bs.tab', function () {
     area.redraw();

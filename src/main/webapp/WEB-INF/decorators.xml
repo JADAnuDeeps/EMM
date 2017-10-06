@@ -16,9 +16,11 @@
     </decorator>
 
     <decorator name="fullPage" page="/WEB-INF/decorators/fullPageLayout.jsp">
-        <pattern>/jsp/welcome.jsp</pattern>
+        <pattern>/welcome.jsp</pattern>
         <pattern>/login.jsp</pattern>
         <pattern>/index.jsp</pattern>
+        <pattern>/404Error.jsp</pattern>
+        <pattern>/500Error.jsp</pattern>
     </decorator>
 
 <!--  <decorator name="headerFooterOnly" page="headerFooterLayout.jsp">
