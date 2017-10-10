@@ -1,4 +1,4 @@
-package com.vimaan.DAO;
+package com.vimaan.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

@@ -1,4 +1,4 @@
-package com.vimaan.DAO;
+package com.vimaan.dao;
 
 import com.vimaan.model.Login;
 import com.vimaan.model.User;

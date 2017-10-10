@@ -1,11 +1,10 @@
 package com.vimaan.service;
 
-import com.vimaan.DAO.UserDao;
+import com.vimaan.dao.UserDao;
 import com.vimaan.model.Login;
 import com.vimaan.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;

@@ -21,8 +21,7 @@
     <tr>
     </tr>
     <tr>
-        <td><a href="index.jsp">Home</a>
-        </td>
+        <%--<td><a href="index.jsp">Home</a></td>--%>
     </tr>
 </table>
 </body>
